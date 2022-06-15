@@ -1,6 +1,6 @@
 # cheat_sh
 
-the http://cheat.sh lightweight wrapper
+the http://cheat.sh non official lightweight wrapper
 
 # example
 
