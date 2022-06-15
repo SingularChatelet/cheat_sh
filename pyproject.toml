@@ -19,4 +19,4 @@ dependencies = [ "requests" ]
 
 [tool.setuptools.packages.find]
 where = [ "." ]
-include = [ "cheat_sh/*" ]
+include = [ "cheat_sh*" ]
