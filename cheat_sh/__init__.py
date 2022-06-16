@@ -1,6 +1,6 @@
 import requests
 import re
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, quote
 
 def get_base_url() -> str:
     """Return http://cheat.sh/."""
@@ -31,7 +31,7 @@ def requests_cheat_sh(request: str, color: bool = False) -> str:
     :param color: color escape sequencies to get color in terminal (but not very helpfull otherwise)
     """
     url = get_base_url()
-    url += quote_plus(request, safe='/')
+    url += quote(request, safe='/+')
     url = url.strip('/')
     if color == False:
         url += "?style=bw"
@@ -60,11 +60,11 @@ def ask(question: str, language: str = "", color: bool = False) -> str:
     if language == "" and question_split[0] in get_supported_language():
         language = question_split[0]
         question_split = question_split[1:]
-        question = " ".join(question_split)
+        question = "+".join(question_split)
     url = ""
     if language != "":
-        url += quote_plus(language, safe="") + "/"
-    url = quote_plus(question, safe='') + "/"
+        url += quote(language, safe="") + "/"
+    url += quote(question, safe='+') + "/"
     result = requests_cheat_sh(url, color=color)
     return result
 
