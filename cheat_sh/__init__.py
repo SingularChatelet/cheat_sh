@@ -32,6 +32,7 @@ def requests_cheat_sh(request: str, color: bool = False) -> str:
     """
     url = get_base_url()
     url += quote_plus(request, safe='/')
+    url = url.strip('/')
     if color == False:
         url += "?style=bw"
     result = requests.get(url)
